@@ -46,6 +46,7 @@ set( WIIUSE_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/wiiuse/src/wiiuse.h" )
 add_executable (${projectName} main.cpp ${WIIUSE_INCLUDE_PATH} )
 
 target_link_libraries( ${projectName} libwiiuse.a )
+# target_include_directories( ${projectName} PUBLIC ${WIIUSE_INCLUDE_PATH} )
 # There may be some additional dependencies which you may have to specify for the project, which you may do as in following lines.
 # Note that first parameter is the executable name.
 # target_link_libraries (${projectName} ${PCL_LIBRARIES} libeng.lib libmx.lib libmex.lib libmat.lib Aria.lib winmm.lib wsock32.lib)
