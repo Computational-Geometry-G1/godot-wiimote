@@ -12,6 +12,8 @@ project(WiiPerspective)
 # find_package(PCL 1.2 REQUIRED)
 # FIND_PACKAGE(MRPT REQUIRED base;bayes;obs;gui)
 
+# https://github.com/wiiuse/wiiuse/issues/63
+add_subdirectory( wiiuse )
 # here we specify the additional include directories for the project. These files come in additional include directories option of VC++
 # project.
 # either the variable values from package like ${PCL_INCLUDE_DIRS} or absolute paths as shown in second and third line may be used.
