@@ -37,7 +37,13 @@ add_subdirectory( wiiuse )
 # compilation in windows platform.
 # Followed by the executable name come all your source and header files.
 # All cpp fles will be clubbed into source folder and all .h files will be added to header files folder of the project.
-add_executable (${projectName} main.cpp)
+
+set( WIIUSE_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/wiiuse/src/wiiuse.h" )
+
+# file( GLOB_RECURSE WIIUSE_INCLUDES "${WIIUSE_INCLUDE_PATH}/*.h" )
+
+
+add_executable (${projectName} main.cpp ${WIIUSE_INCLUDE_PATH} )
 
 # There may be some additional dependencies which you may have to specify for the project, which you may do as in following lines.
 # Note that first parameter is the executable name.
