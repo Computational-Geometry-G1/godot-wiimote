@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 # declare a variable projectName and assigned it a value WiiPerspective. We will make use of the same later.
 SET(projectName WiiPerspective)
 # here we define the project or solution name (for visual studio)
-project(WiiPerspective)
+project(${projectName})
 
 
 # In following lines we try to find out the packages of additional libraries, if reqd. Here we are trying to locate PCL and mrpt library.
