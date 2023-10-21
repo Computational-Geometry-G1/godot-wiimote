@@ -13,7 +13,7 @@ project(${projectName})
 # FIND_PACKAGE(MRPT REQUIRED base;bayes;obs;gui)
 
 # https://github.com/wiiuse/wiiuse/issues/63
-add_subdirectory( wiiuse )
+add_subdirectory( wiiuse/src )
 # here we specify the additional include directories for the project. These files come in additional include directories option of VC++
 # project.
 # either the variable values from package like ${PCL_INCLUDE_DIRS} or absolute paths as shown in second and third line may be used.
@@ -43,7 +43,7 @@ set( WIIUSE_INCLUDE_PATH "${PROJECT_SOURCE_DIR}/wiiuse/src/wiiuse.h" )
 # file( GLOB_RECURSE WIIUSE_INCLUDES "${WIIUSE_INCLUDE_PATH}/*.h" )
 
 
-add_executable (${projectName} main.cpp ${WIIUSE_INCLUDE_PATH} )
+add_executable (${projectName} src/main.cpp ${WIIUSE_INCLUDE_PATH} )
 
 target_link_libraries( ${projectName} libwiiuse.a )
 # target_include_directories( ${projectName} PUBLIC ${WIIUSE_INCLUDE_PATH} )
