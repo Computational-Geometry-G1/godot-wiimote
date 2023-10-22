@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0 FATAL_ERROR)
 
 # declare a variable projectName and assigned it a value WiiPerspective. We will make use of the same later.
-SET(projectName WiiPerspective)
+SET(projectName godot-wiimote)
 # here we define the project or solution name (for visual studio)
 project(${projectName})
 
