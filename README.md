@@ -1,4 +1,6 @@
-# WiiPerspective
+# godot-wiimote
+
+A Wii Remote interface for Godot4 using GDExtension
 
 ## Building
 Ensure dependencies are installed.
