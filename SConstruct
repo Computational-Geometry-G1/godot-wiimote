@@ -19,24 +19,15 @@ import os
 env = Environment()
 
 project_root = Path.cwd()
-wiiuse_dir =  Path("./wiiuse")
-builddir =  Path("./build")
-if not builddir.exists():
-	builddir.mkdir()
 
 
 
 # build cmake dependencies (wiiuse)
-os.chdir(str(builddir))
-call("cmake -DBUILD_EXAMPLE=OFF -DBUILD_EXAMPLE_SDL=OFF -DINSTALL_EXAMPLES=OFF ../wiiuse".split(" "))
-call("make".split(" "))
-os.chdir(str(project_root))
 
 
 
-env.AppendUnique(CPPPATH=['.', wiiuse_dir.joinpath("src")])
 
-env.Append(LIBS = ['bluetooth', builddir.joinpath("src/libwiiuse.a")])
+env.Append(LIBS = ['wiiuse','bluetooth'])
 
 sources = ['src/main.cpp']
 
