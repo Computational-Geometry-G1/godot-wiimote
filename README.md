@@ -1,14 +1,17 @@
 # WiiPerspective
 
 ## Building
-Upon first use, you need to also set up the submodules in this repo. the command for this is `git submodule update`
+Ensure dependencies are installed.
 
+this includes making sure [WiiUse](https://github.com/wiiuse/wiiuse) library is installed in the correct location
 
-### Linux/Unix/Mac
+### Linux/Unix
 ```
-mkdir build
-cd build
-cmake ..
-make
+scons
 ```
+### Mac
+untested
+
+### Windows
+untested
 
