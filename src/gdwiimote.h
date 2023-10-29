@@ -1,12 +1,12 @@
 #ifndef GDWIIMOTE_H
 #define GDWIIMOTE_H
 
-#include <godot_cpp/classes/sprite2d.hpp>
+#include <godot_cpp/classes/ref.hpp>
 
 namespace godot {
 
-class GDWiimote : public Sprite2D {
-	GDCLASS(GDWiimote, Sprite2D)
+class GDWiimote : public RefCounted {
+	GDCLASS(GDWiimote, RefCounted)
 
 private:
 	double time_passed;
