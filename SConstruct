@@ -85,6 +85,8 @@ def copy_bin_to_projectdir(target, source, env):
 
 copy = env.Command(libraryfile, None, copy_bin_to_projectdir)
 
+env.Depends(copy, library)
+
 default_args = [library, copy]
 if localEnv.get("compiledb", False):
     default_args += [compilation_db]
