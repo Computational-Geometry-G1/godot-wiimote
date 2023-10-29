@@ -80,11 +80,17 @@ library = env.SharedLibrary(
 
 
 def copy_bin_to_projectdir(target, source, env):
-    import shutil
+	import shutil
+	
+	prefix=""
 
-    targetfrom = "bin/{}/lib{}".format(env["platform"], file)
-    targetdest = "{}/bin/lib{}".format(projectdir, file)
-    shutil.copyfile(targetfrom, targetdest)
+	if env["platform"] == "linux":
+		prefix="lib"
+
+	targetfrom = "bin/{}/{}{}".format(env["platform"], prefix, file)
+	targetdest = "{}/bin/{}{}".format(projectdir, prefix, file)
+	shutil.copyfile(targetfrom, targetdest)
+
 
     targetdir = "{}/bin/".format(projectdir)
     shutil.copyfile("/usr/local/lib/libwiiuse.so", targetdir+"libwiiuse.so")
