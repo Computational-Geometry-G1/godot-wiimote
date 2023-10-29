@@ -1,4 +1,7 @@
 #include "register_types.h"
+
+#include "gdwiimote.h"
+
 #include <gdextension_interface.h>
 #include <godot_cpp/core/class_db.hpp>
 #include <godot_cpp/core/defs.hpp>
@@ -11,7 +14,7 @@ void initialize_gdextension_types(ModuleInitializationLevel p_level)
 	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
-	//ClassDB::register_class<YourClass>();
+	ClassDB::register_class<GDWiimote>();
 }
 
 void uninitialize_gdextension_types(ModuleInitializationLevel p_level) {
