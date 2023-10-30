@@ -2,7 +2,6 @@
 
 
 #include "gdwiimote.h"
-#include "wiiuse.h"                     /* for wiimote_t, classic_ctrl_t, etc */
 
 
 #include <godot_cpp/core/class_db.hpp>

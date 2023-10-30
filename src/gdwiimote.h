@@ -2,6 +2,7 @@
 #define GDWIIMOTE_H
 
 #include <godot_cpp/classes/ref.hpp>
+#include "wiiuse.h"                     /* for wiimote_t, classic_ctrl_t, etc */
 
 namespace godot {
 
