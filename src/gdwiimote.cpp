@@ -216,7 +216,7 @@ GDWiimote::connect() {
 	wiiuse_rumble(wiimotes[1], 0);
 
 
-	wiiuse_set_ir(wm, 1);
+	wiiuse_set_ir(wiimotes[0], 1);
 	// wiiuse_set_ir(wm, 0);
 
 
