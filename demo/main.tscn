@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://psoe0rwnwy34"]
+[gd_scene load_steps=2 format=3 uid="uid://psoe0rwnwy34"]
+
+[ext_resource type="Texture2D" uid="uid://het36aiuwb2l" path="res://target.png" id="1_8a3jp"]
 
 [node name="Main" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01901, 4.03066, 6.00139)
+
+[node name="Target" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54433, 4.04266, -9.7656)
+texture = ExtResource("1_8a3jp")
+
+[node name="Target2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78629, 8.08532, -1.39272)
+texture = ExtResource("1_8a3jp")
+
+[node name="Target3" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133479, 8.19375, -35.4127)
+texture = ExtResource("1_8a3jp")
+
+[node name="Target4" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.65004, 1.80761, -24.8811)
+texture = ExtResource("1_8a3jp")
+
+[node name="Target5" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10603, 3.61522, -17.0611)
+texture = ExtResource("1_8a3jp")
