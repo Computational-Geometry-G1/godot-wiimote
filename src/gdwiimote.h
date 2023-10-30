@@ -9,7 +9,7 @@ class GDWiimote : public RefCounted {
 	GDCLASS(GDWiimote, RefCounted)
 
 private:
-	double time_passed;
+	wiimote** wiimotes;
 
 protected:
 	static void _bind_methods();
@@ -17,6 +17,10 @@ protected:
 public:
 	GDWiimote();
 	~GDWiimote();
+	// find();
+	connect();
+	start();
+	
 
 	void _process(double delta);
 };
