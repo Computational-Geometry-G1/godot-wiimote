@@ -200,20 +200,20 @@ GDWiimote::connect() {
 	 *	to tell which wiimotes are connected (just like the wii does).
 	 */
 	wiiuse_set_leds(wiimotes[0], WIIMOTE_LED_1);
-	wiiuse_set_leds(wiimotes[1], WIIMOTE_LED_2);
-	wiiuse_set_leds(wiimotes[2], WIIMOTE_LED_3);
-	wiiuse_set_leds(wiimotes[3], WIIMOTE_LED_4);
+	// wiiuse_set_leds(wiimotes[1], WIIMOTE_LED_2);
+	// wiiuse_set_leds(wiimotes[2], WIIMOTE_LED_3);
+	// wiiuse_set_leds(wiimotes[3], WIIMOTE_LED_4);
 	wiiuse_rumble(wiimotes[0], 1);
-	wiiuse_rumble(wiimotes[1], 1);
+	// wiiuse_rumble(wiimotes[1], 1);
 
-	#ifndef WIIUSE_WIN32
-		usleep(200000);
-	#else
-		Sleep(200);
-	#endif
+	// #ifndef WIIUSE_WIN32
+	// 	usleep(200000);
+	// #else
+	// 	Sleep(200);
+	// #endif
 
-	wiiuse_rumble(wiimotes[0], 0);
-	wiiuse_rumble(wiimotes[1], 0);
+	// wiiuse_rumble(wiimotes[0], 0);
+	// wiiuse_rumble(wiimotes[1], 0);
 
 
 	wiiuse_set_ir(wiimotes[0], 1);
