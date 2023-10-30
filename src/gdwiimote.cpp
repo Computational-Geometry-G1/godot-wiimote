@@ -157,7 +157,7 @@ GDWiimote::~GDWiimote() {
 	wiiuse_cleanup(wiimotes, MAX_WIIMOTES);
 }
 
-GDWiimote::connect() {
+int GDWiimote::connect() {
 	/*
 	 *	Find wiimote devices
 	 *
@@ -223,7 +223,7 @@ GDWiimote::connect() {
 }
 
 
-GDWiimote::start() {
+int GDWiimote::start() {
 
 	/*
 	 *	This is the main loop

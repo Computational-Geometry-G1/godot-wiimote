@@ -19,9 +19,8 @@ public:
 	GDWiimote();
 	~GDWiimote();
 	// find();
-	connect();
-	start();
-	
+	int connect();
+	int start();
 
 	void _process(double delta);
 };
