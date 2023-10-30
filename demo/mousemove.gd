@@ -11,13 +11,16 @@ func _process(delta):
 	pass
 
 
-var mouse_sens = 0.3
+var mouse_sens = 0.05
 var camera_anglev=0
 
 func _input(event):         
 	if event is InputEventMouseMotion:
-		self.rotate_y(deg_to_rad(-event.relative.x*mouse_sens))
-		var changev=-event.relative.y*mouse_sens
-		if camera_anglev+changev>-50 and camera_anglev+changev<50:
-			camera_anglev+=changev
-			self.rotate_x(deg_to_rad(changev))
+
+		var x = -event.relative.x*mouse_sens
+		var y = -event.relative.y*mouse_sens
+		print(x)
+		print(y)
+		print()
+		var z = 0
+		self.global_position = Vector3(self.global_position.x+x, self.global_position.y+y, self.global_position.z+z)
