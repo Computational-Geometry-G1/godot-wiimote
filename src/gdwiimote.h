@@ -22,7 +22,6 @@ public:
 	int connect();
 	int start();
 
-	void _process(double delta);
 };
 
 }
