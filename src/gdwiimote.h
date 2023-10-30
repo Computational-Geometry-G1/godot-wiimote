@@ -20,7 +20,7 @@ public:
 	~GDWiimote();
 	// find();
 	int connect();
-	int start();
+	void start();
 
 };
 

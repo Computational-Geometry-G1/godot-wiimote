@@ -223,7 +223,7 @@ int GDWiimote::connect() {
 }
 
 
-int GDWiimote::start() {
+void GDWiimote::start() {
 
 	/*
 	 *	This is the main loop
