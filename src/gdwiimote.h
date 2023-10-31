@@ -21,6 +21,7 @@ public:
 	// find();
 	int connect();
 	void start();
+	void poll();
 
 };
 

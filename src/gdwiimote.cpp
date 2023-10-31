@@ -237,81 +237,86 @@ void GDWiimote::start() {
 	 *	when the wiimote has things to report.
 	 */
 	while (any_wiimote_connected(wiimotes, MAX_WIIMOTES)) {
-		if (wiiuse_poll(wiimotes, MAX_WIIMOTES)) {
-			/*
-			 *	This happens if something happened on any wiimote.
-			 *	So go through each one and check if anything happened.
-			 */
-			int i = 0;
-			for (; i < MAX_WIIMOTES; ++i) {
-				switch (wiimotes[i]->event) {
-					case WIIUSE_EVENT:
-						/* a generic event occurred */
-						handle_event(wiimotes[i]);
-						break;
+		poll()
+	}
 
-					case WIIUSE_STATUS:
-						/* a status event occurred */
-						handle_ctrl_status(wiimotes[i]);
-						break;
+}
 
-					case WIIUSE_DISCONNECT:
-					case WIIUSE_UNEXPECTED_DISCONNECT:
-						/* the wiimote disconnected */
-						handle_disconnect(wiimotes[i]);
-						break;
+void GDWiimote::poll() {
+	if (wiiuse_poll(wiimotes, MAX_WIIMOTES)) {
+		/*
+			*	This happens if something happened on any wiimote.
+			*	So go through each one and check if anything happened.
+			*/
+		int i = 0;
+		for (; i < MAX_WIIMOTES; ++i) {
+			switch (wiimotes[i]->event) {
+				case WIIUSE_EVENT:
+					/* a generic event occurred */
+					handle_event(wiimotes[i]);
+					break;
 
-					case WIIUSE_READ_DATA:
-						/*
-						 *	Data we requested to read was returned.
-						 *	Take a look at wiimotes[i]->read_req
-						 *	for the data.
-						 */
-						break;
+				case WIIUSE_STATUS:
+					/* a status event occurred */
+					handle_ctrl_status(wiimotes[i]);
+					break;
 
-					case WIIUSE_NUNCHUK_INSERTED:
-						/*
-						 *	a nunchuk was inserted
-						 *	This is a good place to set any nunchuk specific
-						 *	threshold values.  By default they are the same
-						 *	as the wiimote.
-						 */
-						/* wiiuse_set_nunchuk_orient_threshold((struct nunchuk_t*)&wiimotes[i]->exp.nunchuk, 90.0f); */
-						/* wiiuse_set_nunchuk_accel_threshold((struct nunchuk_t*)&wiimotes[i]->exp.nunchuk, 100); */
-						printf("Nunchuk inserted.\n");
-						break;
+				case WIIUSE_DISCONNECT:
+				case WIIUSE_UNEXPECTED_DISCONNECT:
+					/* the wiimote disconnected */
+					handle_disconnect(wiimotes[i]);
+					break;
 
-					case WIIUSE_CLASSIC_CTRL_INSERTED:
-						printf("Classic controller inserted.\n");
-						break;
+				case WIIUSE_READ_DATA:
+					/*
+						*	Data we requested to read was returned.
+						*	Take a look at wiimotes[i]->read_req
+						*	for the data.
+						*/
+					break;
 
-					case WIIUSE_WII_BOARD_CTRL_INSERTED:
-						printf("Balance board controller inserted.\n");
-						break;
+				case WIIUSE_NUNCHUK_INSERTED:
+					/*
+						*	a nunchuk was inserted
+						*	This is a good place to set any nunchuk specific
+						*	threshold values.  By default they are the same
+						*	as the wiimote.
+						*/
+					/* wiiuse_set_nunchuk_orient_threshold((struct nunchuk_t*)&wiimotes[i]->exp.nunchuk, 90.0f); */
+					/* wiiuse_set_nunchuk_accel_threshold((struct nunchuk_t*)&wiimotes[i]->exp.nunchuk, 100); */
+					printf("Nunchuk inserted.\n");
+					break;
 
-					case WIIUSE_GUITAR_HERO_3_CTRL_INSERTED:
-						/* some expansion was inserted */
-						handle_ctrl_status(wiimotes[i]);
-						printf("Guitar Hero 3 controller inserted.\n");
-						break;
+				case WIIUSE_CLASSIC_CTRL_INSERTED:
+					printf("Classic controller inserted.\n");
+					break;
 
-					case WIIUSE_MOTION_PLUS_ACTIVATED:
-						printf("Motion+ was activated\n");
-						break;
+				case WIIUSE_WII_BOARD_CTRL_INSERTED:
+					printf("Balance board controller inserted.\n");
+					break;
 
-					case WIIUSE_NUNCHUK_REMOVED:
-					case WIIUSE_CLASSIC_CTRL_REMOVED:
-					case WIIUSE_GUITAR_HERO_3_CTRL_REMOVED:
-					case WIIUSE_WII_BOARD_CTRL_REMOVED:
-					case WIIUSE_MOTION_PLUS_REMOVED:
-						/* some expansion was removed */
-						handle_ctrl_status(wiimotes[i]);
-						printf("An expansion was removed.\n");
-						break;
+				case WIIUSE_GUITAR_HERO_3_CTRL_INSERTED:
+					/* some expansion was inserted */
+					handle_ctrl_status(wiimotes[i]);
+					printf("Guitar Hero 3 controller inserted.\n");
+					break;
 
-					default:
-						break;
-				}
+				case WIIUSE_MOTION_PLUS_ACTIVATED:
+					printf("Motion+ was activated\n");
+					break;
+
+				case WIIUSE_NUNCHUK_REMOVED:
+				case WIIUSE_CLASSIC_CTRL_REMOVED:
+				case WIIUSE_GUITAR_HERO_3_CTRL_REMOVED:
+				case WIIUSE_WII_BOARD_CTRL_REMOVED:
+				case WIIUSE_MOTION_PLUS_REMOVED:
+					/* some expansion was removed */
+					handle_ctrl_status(wiimotes[i]);
+					printf("An expansion was removed.\n");
+					break;
+
+				default:
+					break;
 			}
 		}
 	}
