@@ -16,6 +16,10 @@ protected:
 	static void _bind_methods();
 
 public:
+	int x;
+	int y;
+	int z;
+	
 	GDWiimote();
 	~GDWiimote();
 	// find();

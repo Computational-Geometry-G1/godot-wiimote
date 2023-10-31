@@ -124,15 +124,19 @@ void handle_event(struct wiimote_t* wm) {
 		int i = 0;
 
 		/* go through each of the 4 possible IR sources */
-		for (; i < 4; ++i) {
-			/* check if the source is visible */
-			if (wm->ir.dot[i].visible) {
-				printf("IR source %i: (%u, %u)\n", i, wm->ir.dot[i].x, wm->ir.dot[i].y);
-			}
-		}
+		// for (; i < 4; ++i) {
+		// 	/* check if the source is visible */
+		// 	if (wm->ir.dot[i].visible) {
+		// 		printf("IR source %i: (%u, %u)\n", i, wm->ir.dot[i].x, wm->ir.dot[i].y);
+		// 	}
+		// }
 
-		printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
-		printf("IR z distance: %f\n", wm->ir.z);
+		x = wm->ir.x;
+		y = wm->ir.y;
+		z = wm->ir.z;
+
+		// printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
+		// printf("IR z distance: %f\n", wm->ir.z);
 	}
 
 	/* show events specific to supported expansions */
