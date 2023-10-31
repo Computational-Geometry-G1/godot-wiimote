@@ -1,13 +1,13 @@
 #ifndef GDWIIMOTE_H
 #define GDWIIMOTE_H
 
-#include <godot_cpp/classes/node3d.hpp>
+#include <godot_cpp/classes/ref.hpp>
 #include "wiiuse.h"                     /* for wiimote_t, classic_ctrl_t, etc */
 
 namespace godot {
 
-class GDWiimote : public Node3D {
-	GDCLASS(GDWiimote, Node3D)
+class GDWiimote : public RefCounted {
+	GDCLASS(GDWiimote, RefCounted)
 
 private:
 	wiimote** wiimotes;
