@@ -71,6 +71,7 @@ libraryfile = "bin/{}/{}".format(env["platform"], file)
 # env.Append(LIBS = ['wiiuse','bluetooth'])
 library = env.SharedLibrary(
     libraryfile,
+    LIBS=['wiiuse','bluetooth'],
     source=sources,
 )
 
