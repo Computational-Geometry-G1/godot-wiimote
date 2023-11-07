@@ -241,7 +241,7 @@ void GDWiimote::start() {
 	 *	when the wiimote has things to report.
 	 */
 	while (any_wiimote_connected(wiimotes, MAX_WIIMOTES)) {
-		poll()
+		poll();
 	}
 
 }
