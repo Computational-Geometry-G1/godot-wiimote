@@ -76,7 +76,7 @@ void handle_ctrl_status(struct wiimote_t* wm) {
  *	This function is called automatically by the wiiuse library when an
  *	event occurs on the specified wiimote.
  */
-void handle_event(struct wiimote_t* wm) {
+void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
 	printf("\n\n--- EVENT [id %i] ---\n", wm->unid);
 
 	/* if a button is pressed, report it */
@@ -131,9 +131,9 @@ void handle_event(struct wiimote_t* wm) {
 		// 	}
 		// }
 
-		x = wm->ir.x;
-		y = wm->ir.y;
-		z = wm->ir.z;
+		instance->x = wm->ir.x;
+		instance->y = wm->ir.y;
+		instance->z = wm->ir.z;
 
 		// printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
 		// printf("IR z distance: %f\n", wm->ir.z);
@@ -257,7 +257,7 @@ void GDWiimote::poll() {
 			switch (wiimotes[i]->event) {
 				case WIIUSE_EVENT:
 					/* a generic event occurred */
-					handle_event(wiimotes[i]);
+					handle_event(wiimotes[i], this);
 					break;
 
 				case WIIUSE_STATUS:
