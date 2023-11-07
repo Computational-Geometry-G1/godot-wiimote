@@ -6,7 +6,7 @@
 
 namespace godot {
 
-static class GDWiimote : public RefCounted {
+class GDWiimote : public RefCounted {
 	GDCLASS(GDWiimote, RefCounted)
 
 private:
