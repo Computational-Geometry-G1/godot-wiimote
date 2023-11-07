@@ -24,7 +24,7 @@ git clone https://github.com/wiiuse/wiiuse.git
 cd wiiuse
 mkdir build
 cd build
-cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO
+cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE
 make wiiuse
 sudo make install
 ```
