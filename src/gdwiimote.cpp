@@ -6,6 +6,10 @@
 
 #include <godot_cpp/core/class_db.hpp>
 
+#ifndef WIIUSE_WIN32
+#include <unistd.h>                     /* for usleep */
+#endif
+
 #define MAX_WIIMOTES				1//4
 
 using namespace godot;
@@ -211,11 +215,11 @@ int GDWiimote::connect(int timeout) {
 	wiiuse_rumble(wiimotes[0], 1);
 	// wiiuse_rumble(wiimotes[1], 1);
 
-	// #ifndef WIIUSE_WIN32
-	// 	usleep(200000);
-	// #else
-	Sleep(200);
-	// #endif
+	#ifndef WIIUSE_WIN32
+		usleep(200000);
+	#else
+		Sleep(200);
+	#endif
 
 	wiiuse_rumble(wiimotes[0], 0);
 	// wiiuse_rumble(wiimotes[1], 0);
