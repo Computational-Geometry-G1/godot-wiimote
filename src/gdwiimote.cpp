@@ -10,6 +10,11 @@
 
 using namespace godot;
 
+void GDWiimote::_bind_methods() {
+
+	ClassDB::bind_method(D_METHOD("wiimote_connect", "timeout"), &GDWiimote::connect);
+	ClassDB::bind_method(D_METHOD("poll"), &GDWiimote::poll);
+}
 
 short any_wiimote_connected(wiimote** wm, int wiimotes) {
 	int i;
@@ -142,9 +147,6 @@ void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
 	/* show events specific to supported expansions */
 }
 
-
-void GDWiimote::_bind_methods() {
-}
 
 GDWiimote::GDWiimote() {
 	// Initialize any variables here.
