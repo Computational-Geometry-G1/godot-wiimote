@@ -214,10 +214,10 @@ int GDWiimote::connect(int timeout) {
 	// #ifndef WIIUSE_WIN32
 	// 	usleep(200000);
 	// #else
-	// 	Sleep(200);
+	Sleep(200);
 	// #endif
 
-	// wiiuse_rumble(wiimotes[0], 0);
+	wiiuse_rumble(wiimotes[0], 0);
 	// wiiuse_rumble(wiimotes[1], 0);
 
 
