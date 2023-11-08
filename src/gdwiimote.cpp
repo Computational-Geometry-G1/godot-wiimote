@@ -161,7 +161,7 @@ GDWiimote::~GDWiimote() {
 	wiiuse_cleanup(wiimotes, MAX_WIIMOTES);
 }
 
-int GDWiimote::connect() {
+int GDWiimote::connect(int timeout) {
 	/*
 	 *	Find wiimote devices
 	 *
@@ -173,7 +173,7 @@ int GDWiimote::connect() {
 	 *
 	 *	This will return the number of actual wiimotes that are in discovery mode.
 	 */
-	int found = wiiuse_find(wiimotes, MAX_WIIMOTES, 5);
+	int found = wiiuse_find(wiimotes, MAX_WIIMOTES, timeout);
 	if (!found) {
 		printf("No wiimotes found.\n");
 		return 0;

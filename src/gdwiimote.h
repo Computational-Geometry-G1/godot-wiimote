@@ -23,7 +23,7 @@ public:
 	GDWiimote();
 	~GDWiimote();
 	// find();
-	int connect();
+	int connect(int timeout);
 	void start();
 	void poll();
 
