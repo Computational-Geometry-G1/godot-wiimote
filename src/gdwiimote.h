@@ -11,6 +11,8 @@ class GDWiimote : public Node3D {
 
 private:
 	wiimote** wiimotes;
+	double time_passed;
+
 
 protected:
 	static void _bind_methods();

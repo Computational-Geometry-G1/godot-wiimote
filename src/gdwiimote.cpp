@@ -159,6 +159,7 @@ GDWiimote::GDWiimote() {
 	// 
 	// time_passed = 0.0;
 	wiimotes = wiiuse_init(MAX_WIIMOTES);
+	time_passed = 0.0;
 }
 
 GDWiimote::~GDWiimote() {
@@ -333,6 +334,17 @@ void GDWiimote::poll() {
 
 }
 
+void GDWiimote::_process(double delta) {
+	time_passed += delta;
+
+	Vector2 new_position = Vector2(, );
+
+	// set_position(new_position);
+
+	x = 10.0 + (10.0 * sin(time_passed * 2.0));
+	y = 10.0 + (10.0 * cos(time_passed * 1.5));
+	z = 10.0 + (10.0 * sin(time_passed));
+}
 // void GDWiimote::_process(double delta) {
 // 	time_passed += delta;
 
