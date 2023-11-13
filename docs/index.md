@@ -1,0 +1,3 @@
+## Godot-wiimote internal/development docs
+
+The `dependencies` section of the `.gdextension` allows you to name additional dynamic libraries that should be included as well. This is important when your GDExtension plugin (such as this one) implements someone else's library and requires you to supply a third-party dynamic library with your project. This tells godot that these files should also be exported with your project, but it is up to the extension (i.e. this repo) to link to or otherwise load them ([source](https://github.com/godotengine/godot-docs/issues/5618#issuecomment-1802152477)). Documentation on the format of this file is a little bit scarce but can be found [here](https://github.com/allan-simon/gdextension-vosk-speech-to-text#interesting-part).
