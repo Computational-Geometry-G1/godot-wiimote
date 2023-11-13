@@ -77,7 +77,14 @@ jobs:
         if: ${{ matrix.platform == 'linux' }}
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -qqq build-essential pkg-config
+          sudo apt-get install -qqq build-essential pkg-config libbluetooth-dev
+          git clone https://github.com/wiiuse/wiiuse
+          cd wiiuse
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_INSTALL_PREFIX=/usr/local -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE
+          make wiiuse
+          sudo make install
       - name: Setup MinGW for Windows/MinGW build
         if: ${{ matrix.platform == 'windows' }}
         uses: egor-tensin/setup-mingw@v2
