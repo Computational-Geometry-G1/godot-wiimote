@@ -18,6 +18,14 @@ void GDWiimote::_bind_methods() {
 
 	ClassDB::bind_method(D_METHOD("wiimote_connect", "timeout"), &GDWiimote::connect);
 	ClassDB::bind_method(D_METHOD("poll"), &GDWiimote::poll);
+	ClassDB::add_property("GDWiimote", PropertyInfo(Variant::FLOAT, "x"), "", "get_x");//set_x
+	ClassDB::add_property("GDWiimote", PropertyInfo(Variant::FLOAT, "y"), "", "get_y");//set_y
+	ClassDB::add_property("GDWiimote", PropertyInfo(Variant::FLOAT, "z"), "", "get_z");//set_z
+	ClassDB::bind_method(D_METHOD("get_x"), &GDWiimote::get_x);
+	ClassDB::bind_method(D_METHOD("get_y"), &GDWiimote::get_y);
+	ClassDB::bind_method(D_METHOD("get_z"), &GDWiimote::get_z);
+
+	ClassDB::bind_method(D_METHOD("_process"), &GDWiimote::_process);
 }
 
 short any_wiimote_connected(wiimote** wm, int wiimotes) {
@@ -337,7 +345,6 @@ void GDWiimote::poll() {
 void GDWiimote::_process(double delta) {
 	time_passed += delta;
 
-	Vector2 new_position = Vector2(, );
 
 	// set_position(new_position);
 
@@ -345,6 +352,31 @@ void GDWiimote::_process(double delta) {
 	y = 10.0 + (10.0 * cos(time_passed * 1.5));
 	z = 10.0 + (10.0 * sin(time_passed));
 }
+
+void GDWiimote::set_x(const double new_x) {
+	x = new_x;
+}
+
+double GDWiimote::get_x() {
+	return x;
+}
+
+void GDWiimote::set_y(const godot::Variant new_y) {
+	y = new_y;
+}
+
+godot::Variant GDWiimote::get_y() {
+	return y;
+}
+
+void GDWiimote::set_z(const godot::Variant new_z) {
+	z = new_z;
+}
+
+godot::Variant GDWiimote::get_z() {
+	return z;
+}
+
 // void GDWiimote::_process(double delta) {
 // 	time_passed += delta;
 

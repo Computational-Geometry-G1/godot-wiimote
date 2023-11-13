@@ -18,9 +18,9 @@ protected:
 	static void _bind_methods();
 
 public:
-	int x;
-	int y;
-	int z;
+	double x;
+	godot::Variant y;
+	godot::Variant z;
 	
 	GDWiimote();
 	~GDWiimote();
@@ -29,6 +29,13 @@ public:
 	void start();
 	void poll();
 
+	void _process(double);
+	void set_x(const double new_x);
+	double get_x();
+	void set_y(const godot::Variant new_y);
+	godot::Variant get_y();
+	void set_z(const godot::Variant new_z);
+	godot::Variant get_z();
 };
 
 }
