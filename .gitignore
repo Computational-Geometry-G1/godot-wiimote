@@ -1,57 +1,50 @@
-# Prerequisites
-*.d
+# Godot 4+ specific ignores
+.godot/
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Ignore library files but not the gdextension file
+demo/bin/*
+!demo/bin/android
+demo/bin/android/*
+!demo/bin/android/.gitkeep
+!demo/bin/linux
+demo/bin/linux/*
+!demo/bin/linux/.gitkeep
+!demo/bin/macos
+demo/bin/macos/*
+!demo/bin/macos/.gitkeep
+!demo/bin/windows
+demo/bin/windows/*
+!demo/bin/windows/.gitkeep
+!demo/bin/*.gdextension
+.sconsign*.dblite
 
-# Precompiled Headers
-*.gch
-*.pch
+# Ignore custom.py
+custom.py
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
-
-
-CMakeLists.txt.user
-CMakeCache.txt
-CMakeFiles
-CMakeScripts
-Testing
-Makefile
-cmake_install.cmake
-install_manifest.txt
+# Ignore generated compile_commands.json
 compile_commands.json
-CTestTestfile.cmake
-_deps
 
-build/
+# Binaries
+*.o
+*.os
+*.so
+*.obj
+*.bc
+*.pyc
+*.dblite
+*.pdb
+*.lib
+*.config
+*.creator
+*.creator.user
+*.files
+*.includes
+*.idb
+*.exp
 
-# for projects that use SCons for building: http://http://www.scons.org/
-.sconsign.dblite
+# Other stuff
+*.log
 
-# When configure fails, SCons outputs these
-config.log
-.sconf_temp
-
-
-godot-wiimote
+# VSCode
+.vscode/*
+!.vscode/extensions.json
