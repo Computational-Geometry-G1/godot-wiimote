@@ -347,9 +347,6 @@ void GDWiimote::poll() {
 void GDWiimote::_process(double delta) {
 	time_passed += delta;
 
-
-	// set_position(new_position);
-
 	x = 10.0 + (10.0 * sin(time_passed * 2.0));
 	y = 10.0 + (10.0 * cos(time_passed * 1.5));
 	z = 10.0 + (10.0 * sin(time_passed));
@@ -378,13 +375,5 @@ void GDWiimote::set_z(const double new_z) {
 double GDWiimote::get_z() {
 	return z;
 }
-
-// void GDWiimote::_process(double delta) {
-// 	time_passed += delta;
-
-// 	Vector2 new_position = Vector2(10.0 + (10.0 * sin(time_passed * 2.0)), 10.0 + (10.0 * cos(time_passed * 1.5)));
-
-// 	set_position(new_position);
-// }
 
 
