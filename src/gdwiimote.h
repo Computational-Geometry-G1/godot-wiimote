@@ -19,8 +19,8 @@ protected:
 
 public:
 	double x;
-	godot::Variant y;
-	godot::Variant z;
+	double y;
+	double z;
 	
 	GDWiimote();
 	~GDWiimote();
@@ -32,10 +32,10 @@ public:
 	void _process(double);
 	void set_x(const double new_x);
 	double get_x();
-	void set_y(const godot::Variant new_y);
-	godot::Variant get_y();
-	void set_z(const godot::Variant new_z);
-	godot::Variant get_z();
+	void set_y(const double new_y);
+	double get_y();
+	void set_z(const double new_z);
+	double get_z();
 };
 
 }

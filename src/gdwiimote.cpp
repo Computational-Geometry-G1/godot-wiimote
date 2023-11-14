@@ -363,19 +363,19 @@ double GDWiimote::get_x() {
 	return x;
 }
 
-void GDWiimote::set_y(const godot::Variant new_y) {
+void GDWiimote::set_y(const double new_y) {
 	y = new_y;
 }
 
-godot::Variant GDWiimote::get_y() {
+double GDWiimote::get_y() {
 	return y;
 }
 
-void GDWiimote::set_z(const godot::Variant new_z) {
+void GDWiimote::set_z(const double new_z) {
 	z = new_z;
 }
 
-godot::Variant GDWiimote::get_z() {
+double GDWiimote::get_z() {
 	return z;
 }
 
