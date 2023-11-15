@@ -67,7 +67,7 @@ if env["platform"] == "macos":
     platlibname = "{}.{}.{}".format(libname, env["platform"], env["target"])
     file = "{}.framework/{}".format(env["platform"], platlibname, platlibname)
 
-libraryfile = "bin/{}/{}".format(env["platform"], file)
+libraryfile = "bin/{}".format(file)
 # env.Append(LIBS = ['wiiuse','bluetooth'])
 
 env.Append(LIBPATH=["bin/"])
@@ -87,7 +87,7 @@ def copy_bin_to_projectdir(target, source, env):
     if env["platform"] == "linux":
         prefix="lib"
 
-    targetfrom = "bin/{}/{}{}".format(env["platform"], prefix, file)
+    targetfrom = "bin/{}{}".format(prefix, file)
     targetdest = "{}/bin/{}{}".format(projectdir, prefix, file)
     shutil.copyfile(targetfrom, targetdest)
 
