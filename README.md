@@ -4,7 +4,9 @@ A Wii Remote interface for Godot4 using GDExtension.
 
 This is based on the [godot-cpp template](https://github.com/godotengine/godot-cpp-template), a quickstart template for GDExtension development with Godot 4.0+.
 
-This project targets the latest verison of godot (4.1)
+This project targets the latest verison of godot (4.1).
+
+This repository was primarily created to perform wii remote head tracking using IR data from a static wii remote. While supporting additional functions of the wiimote are preferred, I am not familiar enough with godot to know what the best way to do this is - contributions are absolutely welcome!
 
 ## Contents
 * An Godot project for demonstrating the functionality (`demo/`)
