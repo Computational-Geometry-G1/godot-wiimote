@@ -80,16 +80,16 @@ library = env.SharedLibrary(
 
 
 def copy_bin_to_projectdir(target, source, env):
-	import shutil
-	
-	prefix=""
+    import shutil
+    
+    prefix=""
 
-	if env["platform"] == "linux":
-		prefix="lib"
+    if env["platform"] == "linux":
+        prefix="lib"
 
-	targetfrom = "bin/{}/{}{}".format(env["platform"], prefix, file)
-	targetdest = "{}/bin/{}{}".format(projectdir, prefix, file)
-	shutil.copyfile(targetfrom, targetdest)
+    targetfrom = "bin/{}/{}{}".format(env["platform"], prefix, file)
+    targetdest = "{}/bin/{}{}".format(projectdir, prefix, file)
+    shutil.copyfile(targetfrom, targetdest)
 
 
     targetdir = "{}/bin/".format(projectdir)
