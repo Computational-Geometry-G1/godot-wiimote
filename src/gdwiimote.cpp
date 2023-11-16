@@ -266,6 +266,8 @@ void GDWiimote::calibrate() {
 		set_y(-wm->ir.y);
 		set_z(-wm->ir.z);
 	}
+
+	rumble(200)
 }
 
 void GDWiimote::start() {
