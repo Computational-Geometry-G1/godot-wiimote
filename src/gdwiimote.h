@@ -13,6 +13,9 @@ private:
 	wiimote** wiimotes;
 	double time_passed;
 
+	double x_offset;
+	double y_offset;
+	double z_offset;
 
 protected:
 	static void _bind_methods();

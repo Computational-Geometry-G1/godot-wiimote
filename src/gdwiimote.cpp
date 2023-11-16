@@ -357,7 +357,7 @@ void GDWiimote::set_x(const double new_x) {
 }
 
 double GDWiimote::get_x() {
-	return x;
+	return x + x_offset;
 }
 
 void GDWiimote::set_y(const double new_y) {
@@ -365,7 +365,7 @@ void GDWiimote::set_y(const double new_y) {
 }
 
 double GDWiimote::get_y() {
-	return y;
+	return y + y_offset;
 }
 
 void GDWiimote::set_z(const double new_z) {
@@ -373,7 +373,7 @@ void GDWiimote::set_z(const double new_z) {
 }
 
 double GDWiimote::get_z() {
-	return z;
+	return z + z_offset;
 }
 
 
