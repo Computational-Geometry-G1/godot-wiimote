@@ -24,6 +24,10 @@ void GDWiimote::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_x"), &GDWiimote::get_x);
 	ClassDB::bind_method(D_METHOD("get_y"), &GDWiimote::get_y);
 	ClassDB::bind_method(D_METHOD("get_z"), &GDWiimote::get_z);
+	ClassDB::bind_method(D_METHOD("set_x_sensitivity"), &GDWiimote::set_x_sensitivity);
+	ClassDB::bind_method(D_METHOD("set_y_sensitivity"), &GDWiimote::set_y_sensitivity);
+	ClassDB::bind_method(D_METHOD("set_z_sensitivity"), &GDWiimote::set_z_sensitivity);
+
 
 	ClassDB::bind_method(D_METHOD("simulate_data"), &GDWiimote::simulate_data);
 }
@@ -373,7 +377,7 @@ void GDWiimote::set_x(const double new_x) {
 }
 
 double GDWiimote::get_x() {
-	return x + x_offset;
+	return (x + x_offset) * x_sensitivity;
 }
 
 void GDWiimote::set_y(const double new_y) {
@@ -381,7 +385,7 @@ void GDWiimote::set_y(const double new_y) {
 }
 
 double GDWiimote::get_y() {
-	return y + y_offset;
+	return (y + y_offset) * y_sensitivity;
 }
 
 void GDWiimote::set_z(const double new_z) {
@@ -389,7 +393,18 @@ void GDWiimote::set_z(const double new_z) {
 }
 
 double GDWiimote::get_z() {
-	return z + z_offset;
+	return (z + z_offset) * z_sensitivity;
 }
 
 
+void GDWiimote::set_x_sensitivity(const double new_x_sensitivity) {
+	x_sensitivity = new_x_sensitivity;
+}
+
+void GDWiimote::set_y_sensitivity(const double new_y_sensitivity) {
+	y_sensitivity = new_y_sensitivity;
+}
+
+void GDWiimote::set_z_sensitivity(const double new_z_sensitivity) {
+	z_sensitivity = new_z_sensitivity;
+}

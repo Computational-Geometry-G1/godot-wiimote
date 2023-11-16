@@ -17,6 +17,10 @@ private:
 	double y_offset;
 	double z_offset;
 
+	int x_sensitivity;
+	int y_sensitivity;
+	int z_sensitivity;
+
 protected:
 	static void _bind_methods();
 
@@ -42,6 +46,10 @@ public:
 	double get_y();
 	void set_z(const double new_z);
 	double get_z();
+
+	void set_x_sensitivity(const double new_x_sensitivity);
+	void set_y_sensitivity(const double new_y_sensitivity);
+	void set_z_sensitivity(const double new_z_sensitivity);
 };
 
 }
