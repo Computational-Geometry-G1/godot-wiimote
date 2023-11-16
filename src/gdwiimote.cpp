@@ -226,7 +226,7 @@ int GDWiimote::connect(int timeout) {
 	// wiiuse_set_leds(wiimotes[1], WIIMOTE_LED_2);
 	// wiiuse_set_leds(wiimotes[2], WIIMOTE_LED_3);
 	// wiiuse_set_leds(wiimotes[3], WIIMOTE_LED_4);
-	rumble(200)
+	rumble(200);
 
 
 	wiiuse_set_ir(wiimotes[0], 1);
@@ -267,7 +267,7 @@ void GDWiimote::calibrate() {
 		set_z(-wm->ir.z);
 	}
 
-	rumble(200)
+	rumble(200);
 }
 
 void GDWiimote::start() {
