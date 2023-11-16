@@ -99,6 +99,7 @@ void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
 	/* if a button is pressed, report it */
 	if (IS_PRESSED(wm, WIIMOTE_BUTTON_A)) {
 		printf("A pressed\n");
+		instance->calibrate();
 	}
 	if (IS_PRESSED(wm, WIIMOTE_BUTTON_B)) {
 		printf("B pressed\n");
