@@ -31,6 +31,8 @@ public:
 	int connect(int timeout);
 	void start();
 	void poll();
+	void calibrate();
+
 	void simulate_data(double);
 	
 

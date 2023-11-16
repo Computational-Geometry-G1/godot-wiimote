@@ -241,6 +241,21 @@ int GDWiimote::connect(int timeout) {
 	return connected;
 }
 
+/**
+ * @brief Set the offset values to ones that cancel out the current values so that the returned values are "centered" on 0,0,0
+ * 
+ */
+void GDWiimote::calibrate() {
+	//struct wiimote_t* wm
+
+	struct wiimote_t* wm = wiimotes[0];
+
+	if (WIIUSE_USING_IR(wm)) {
+		set_x(-wm->ir.x);
+		set_y(-wm->ir.y);
+		set_z(-wm->ir.z);
+	}
+}
 
 void GDWiimote::start() {
 
