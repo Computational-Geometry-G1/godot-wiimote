@@ -262,9 +262,9 @@ void GDWiimote::calibrate() {
 	struct wiimote_t* wm = wiimotes[0];
 
 	if (WIIUSE_USING_IR(wm)) {
-		set_x(-wm->ir.x);
-		set_y(-wm->ir.y);
-		set_z(-wm->ir.z);
+		x_offset = -1 * wm->ir.x;
+		y_offset = -1 * wm->ir.y;
+		z_offset = -1 * wm->ir.z;
 	}
 
 	rumble(200);
