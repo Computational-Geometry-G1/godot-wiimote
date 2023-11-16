@@ -148,9 +148,9 @@ void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
 		// 	}
 		// }
 
-		instance->x = wm->ir.x;
-		instance->y = wm->ir.y;
-		instance->z = wm->ir.z;
+		instance->set_x(wm->ir.x);
+		instance->set_y(wm->ir.y);
+		instance->set_z(wm->ir.z);
 
 		// printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
 		// printf("IR z distance: %f\n", wm->ir.z);
