@@ -13,13 +13,13 @@ private:
 	wiimote** wiimotes;
 	double time_passed;
 
-	double x_offset;
-	double y_offset;
-	double z_offset;
+	double x_offset = 0;
+	double y_offset = 0;
+	double z_offset = 0;
 
-	int x_sensitivity;
-	int y_sensitivity;
-	int z_sensitivity;
+	int x_sensitivity = 1;
+	int y_sensitivity = 1;
+	int z_sensitivity = 1;
 
 protected:
 	static void _bind_methods();
