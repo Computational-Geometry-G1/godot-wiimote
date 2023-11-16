@@ -7,6 +7,9 @@ func _ready():
 	gdwiimote = GDWiimote.new()
 	print("connecting....")
 	var num_connected = gdwiimote.wiimote_connect(5)
+	gdwiimote.set_x_sensitivity(0.5)
+	gdwiimote.set_y_sensitivity(0.5)
+	gdwiimote.set_z_sensitivity(0.5)
 	print("turn on your wiimote now....")
 	# pass # Replace with function body.
 	if num_connected == 0:
