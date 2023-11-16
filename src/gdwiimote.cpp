@@ -236,7 +236,7 @@ int GDWiimote::connect(int timeout) {
 	return connected;
 }
 
-void rumble(int delay_ms) {
+void GDWiimote::rumble(int delay_ms) {
 
 	wiiuse_rumble(wiimotes[0], 1);
 	// wiiuse_rumble(wiimotes[1], 1);
