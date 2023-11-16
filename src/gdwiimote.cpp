@@ -226,17 +226,7 @@ int GDWiimote::connect(int timeout) {
 	// wiiuse_set_leds(wiimotes[1], WIIMOTE_LED_2);
 	// wiiuse_set_leds(wiimotes[2], WIIMOTE_LED_3);
 	// wiiuse_set_leds(wiimotes[3], WIIMOTE_LED_4);
-	wiiuse_rumble(wiimotes[0], 1);
-	// wiiuse_rumble(wiimotes[1], 1);
-
-	#ifndef WIIUSE_WIN32
-		usleep(200000);
-	#else
-		Sleep(200);
-	#endif
-
-	wiiuse_rumble(wiimotes[0], 0);
-	// wiiuse_rumble(wiimotes[1], 0);
+	rumble(200)
 
 
 	wiiuse_set_ir(wiimotes[0], 1);
@@ -244,6 +234,22 @@ int GDWiimote::connect(int timeout) {
 
 
 	return connected;
+}
+
+void rumble(int delay_ms) {
+
+	wiiuse_rumble(wiimotes[0], 1);
+	// wiiuse_rumble(wiimotes[1], 1);
+
+	#ifndef WIIUSE_WIN32
+		usleep(delay_ms*1000);
+	#else
+		Sleep(delay_ms);
+	#endif
+
+	wiiuse_rumble(wiimotes[0], 0);
+	// wiiuse_rumble(wiimotes[1], 0);
+
 }
 
 /**

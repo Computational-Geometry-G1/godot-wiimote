@@ -36,6 +36,7 @@ public:
 	void start();
 	void poll();
 	void calibrate();
+	void rumble(int delay_ms);
 
 	void simulate_data(double);
 	
