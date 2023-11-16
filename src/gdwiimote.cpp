@@ -25,7 +25,7 @@ void GDWiimote::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("get_y"), &GDWiimote::get_y);
 	ClassDB::bind_method(D_METHOD("get_z"), &GDWiimote::get_z);
 
-	ClassDB::bind_method(D_METHOD("_process"), &GDWiimote::_process);
+	ClassDB::bind_method(D_METHOD("simulate_data"), &GDWiimote::simulate_data);
 }
 
 short any_wiimote_connected(wiimote** wm, int wiimotes) {
@@ -344,7 +344,7 @@ void GDWiimote::poll() {
 
 }
 
-void GDWiimote::_process(double delta) {
+void GDWiimote::simulate_data(double delta) {
 	time_passed += delta;
 
 	x = 10.0 + (10.0 * sin(time_passed * 2.0));

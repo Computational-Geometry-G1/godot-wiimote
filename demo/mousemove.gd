@@ -16,7 +16,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#gdwiimote.poll()
-	gdwiimote._process(delta)
+	#gdwiimote.simulate_data(delta)
 	print(gdwiimote.get_x())
 	print(gdwiimote.get_y())
 	print(gdwiimote.get_z())

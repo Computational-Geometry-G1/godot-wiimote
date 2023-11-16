@@ -28,8 +28,9 @@ public:
 	int connect(int timeout);
 	void start();
 	void poll();
+	void simulate_data(double);
+	
 
-	void _process(double);
 	void set_x(const double new_x);
 	double get_x();
 	void set_y(const double new_y);
