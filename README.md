@@ -19,7 +19,7 @@ This repository was primarily created to perform wii remote head tracking using 
 In order to build, you must ensure dependencies are installed/available on your system.
 
 ### Wiiuse
-Ensure aking sure [WiiUse](https://github.com/wiiuse/wiiuse) library is installed in a location that can be found by your system
+Ensure the [WiiUse](https://github.com/wiiuse/wiiuse) library is installed in a location that can be found by your system
 
 Wiiuse may also depend on additional things based on your platform, see the wiiuse README for more detailed, platform-specific instructions.
 
