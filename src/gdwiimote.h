@@ -17,9 +17,9 @@ private:
 	double y_offset = 0;
 	double z_offset = 0;
 
-	int x_sensitivity = 1;
-	int y_sensitivity = 1;
-	int z_sensitivity = 1;
+	double x_sensitivity = 1;
+	double y_sensitivity = 1;
+	double z_sensitivity = 1;
 
 protected:
 	static void _bind_methods();
