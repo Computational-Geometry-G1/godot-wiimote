@@ -43,17 +43,27 @@ linux.debug.x86_64 = {
     "res://bin/libwiiuse.so" : ""
 }
 linux.x86_64 = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.so" : ",
+    "res://bin/libwiiuse.so.0": "",
+    "res://bin/libwiiuse.so.0.15.5" : ""
 }
 linux.debug.arm64 = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.so" : "",
+    "res://bin/libwiiuse.so.0": "",
+    "res://bin/libwiiuse.so.0.15.5" : ""
 }
 linux.arm64 = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.so" : "",
+    "res://bin/libwiiuse.so.0": "",
+    "res://bin/libwiiuse.so.0.15.5" : ""
 }
 linux.debug.rv64 = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.so" : "",
+    "res://bin/libwiiuse.so.0": "",
+    "res://bin/libwiiuse.so.0.15.5" : ""
 }
 linux.rv64 = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.so" : "",
+    "res://bin/libwiiuse.so.0": "",
+    "res://bin/libwiiuse.so.0.15.5" : ""
 }
