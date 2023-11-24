@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-
+import shutil
 # For reference:
 # - CCFLAGS are compilation flags shared between C and C++
 # - CFLAGS are for C-specific compilation flags
@@ -85,7 +85,7 @@ library = env.SharedLibrary(
 
 
 def copy_bin_to_projectdir(target, source, env):
-    import shutil
+
     
     prefix=""
 
