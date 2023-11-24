@@ -25,6 +25,7 @@ func _process(delta):
 	print(gdwiimote.get_x())
 	print(gdwiimote.get_y())
 	print(gdwiimote.get_z())
+	print()
 	#print(gdwiimote.x)
 	#print(gdwiimote.y)
 	#print(gdwiimote.z)
