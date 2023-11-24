@@ -90,7 +90,7 @@ def copy_bin_to_projectdir(target, source, env):
     
     prefix=""
 
-    if env["platform"] == "linux":
+    if env["platform"] != "windows":
         prefix="lib"
 
     targetfrom = "bin/{}{}".format(prefix, file)
