@@ -98,11 +98,11 @@ void handle_ctrl_status(struct wiimote_t* wm) {
  *	event occurs on the specified wiimote.
  */
 void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
-	printf("\n\n--- EVENT [id %i] ---\n", wm->unid);
+	// printf("\n\n--- EVENT [id %i] ---\n", wm->unid);
 
 	/* if a button is pressed, report it */
 	if (IS_PRESSED(wm, WIIMOTE_BUTTON_A)) {
-		printf("A pressed\n");
+		// printf("A pressed\n");
 		instance->calibrate();
 	}
 	if (IS_PRESSED(wm, WIIMOTE_BUTTON_B)) {
@@ -306,7 +306,7 @@ void GDWiimote::poll() {
 
 					case WIIUSE_STATUS:
 						/* a status event occurred */
-						handle_ctrl_status(wiimotes[i]);
+						// handle_ctrl_status(wiimotes[i]);
 						break;
 
 					case WIIUSE_DISCONNECT:
