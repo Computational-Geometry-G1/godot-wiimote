@@ -5,6 +5,7 @@
 
 
 #include <godot_cpp/core/class_db.hpp>
+#include <wiiuse.h>
 
 #ifndef WIIUSE_WIN32
 #include <unistd.h>                     /* for usleep */
