@@ -65,7 +65,7 @@ file = "{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"])
 
 if env["platform"] == "macos":
     platlibname = "{}.{}.{}".format(libname, env["platform"], env["target"])
-    file = "{}.framework/{}".format(env["platform"], platlibname, platlibname)
+    file = platlibname
 
 libraryfile = "bin/{}".format(file)
 # env.Append(LIBS = ['wiiuse','bluetooth'])
