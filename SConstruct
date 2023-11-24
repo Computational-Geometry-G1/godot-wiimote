@@ -99,9 +99,11 @@ def copy_bin_to_projectdir(target, source, env):
 
 
     targetdir = "{}/bin/".format(projectdir)
-    shutil.copyfile("/usr/local/lib/libwiiuse.so", targetdir+"libwiiuse.so")
-    shutil.copyfile("/usr/local/lib/libwiiuse.so.0", targetdir+"libwiiuse.so.0")
-    shutil.copyfile("/usr/local/lib/libwiiuse.so.0.15.5", targetdir+"libwiiuse.so.0.15.5")
+    if env["platform"] != "windows":
+
+        shutil.copyfile("/usr/local/lib/libwiiuse.{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.so")
+        shutil.copyfile("/usr/local/lib/libwiiuse.{}.0".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.so.0")
+        shutil.copyfile("/usr/local/lib/libwiiuse.{}.0.15.5".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.so.0.15.5")
 
 copy = env.Command(libraryfile, None, copy_bin_to_projectdir)
 
