@@ -21,6 +21,8 @@ project("${GDEXTENSION_LIB_NAME}"
     0.1.0
 )
 
+include(godot-engine-configuration)
+
 set(BUILD_SHARED_LIBS OFF)
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/extern/godot-cpp")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/extern/wiiuse")

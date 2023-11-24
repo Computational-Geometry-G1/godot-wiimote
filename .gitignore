@@ -50,4 +50,6 @@ compile_commands.json
 
 # VSCode
 .vscode/*
+!.vscode/launch.json
 !.vscode/extensions.json
+!.vscode/c_cpp_properties.json
