@@ -388,6 +388,7 @@ void GDWiimote::set_pos(const Vector3 new_pos) {
 
 void GDWiimote::set_x(const double new_x) {
 	x = new_x;
+	set_pos(Vector3(x, y, z));
 }
 
 double GDWiimote::get_x() {
@@ -396,6 +397,8 @@ double GDWiimote::get_x() {
 
 void GDWiimote::set_y(const double new_y) {
 	y = new_y;
+	set_pos(Vector3(x, y, z));
+
 }
 
 double GDWiimote::get_y() {
@@ -404,6 +407,8 @@ double GDWiimote::get_y() {
 
 void GDWiimote::set_z(const double new_z) {
 	z = new_z;
+	set_pos(Vector3(x, y, z));
+
 }
 
 double GDWiimote::get_z() {
