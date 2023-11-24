@@ -1,12 +1,12 @@
 extends Camera3D
 
 var gdwiimote
-
+var num_connected
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	gdwiimote = GDWiimote.new()
 	print("connecting....")
-	var num_connected = gdwiimote.wiimote_connect(5)
+	num_connected = gdwiimote.wiimote_connect(5)
 	gdwiimote.set_x_sensitivity(0.5)
 	gdwiimote.set_y_sensitivity(0.5)
 	gdwiimote.set_z_sensitivity(0.5)
@@ -18,8 +18,10 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#gdwiimote.poll()
-	#gdwiimote.simulate_data(delta)
+	if num_connected > 0:
+		gdwiimote.poll()
+	else:
+		gdwiimote.simulate_data(delta)
 	print(gdwiimote.get_x())
 	print(gdwiimote.get_y())
 	print(gdwiimote.get_z())
