@@ -5,8 +5,8 @@ compatibility_minimum = "4.1"
 
 [libraries]
 
-macos.debug = "res://bin/libgdwiimote.macos.template_debug.framework"
-macos = "res://bin/libgdwiimote.macos.template_release.framework"
+macos.debug = "res://bin/libgdwiimote.macos.template_debug"
+macos = "res://bin/libgdwiimote.macos.template_release"
 windows.debug.x86_32 = "res://bin/libgdwiimote.windows.template_debug.x86_32.dll"
 windows.x86_32 = "res://bin/libgdwiimote.windows.template_release.x86_32.dll"
 windows.debug.x86_64 = "res://bin/libgdwiimote.windows.template_debug.x86_64.dll"
@@ -22,10 +22,10 @@ linux.rv64 = "res://bin/libgdwiimote.linux.template_release.rv64.so"
 
 
 macos.debug = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.dylib" : ""
 }
 macos = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.dylib" : ""
 }
 windows.debug.x86_32 = {
     "res://bin/libwiiuse.so" : ""
