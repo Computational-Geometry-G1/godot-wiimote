@@ -12,7 +12,7 @@ windows.release.x86_32 = "res://bin/libgdwiimote.windows.template_release.x86_32
 windows.debug.x86_64 = "res://bin/libgdwiimote.windows.template_debug.x86_64.dll"
 windows.release.x86_64 = "res://bin/libgdwiimote.windows.template_release.x86_64.dll"
 linux.debug.x86_64 = "res://bin/libgdwiimote.linux.template_debug.x86_64.so"
-linux.release.x86_64 = "res://bin/libgdwiimote.linux.template_release.x86_64.so"
+linux.x86_64 = "res://bin/libgdwiimote.linux.template_release.x86_64.so"
 linux.debug.arm64 = "res://bin/libgdwiimote.linux.template_debug.arm64.so"
 linux.release.arm64 = "res://bin/libgdwiimote.linux.template_release.arm64.so"
 linux.debug.rv64 = "res://bin/libgdwiimote.linux.template_debug.rv64.so"
@@ -42,7 +42,7 @@ windows.release.x86_64 = {
 linux.debug.x86_64 = {
     "res://bin/libwiiuse.so" : ""
 }
-linux.release.x86_64 = {
+linux.x86_64 = {
     "res://bin/libwiiuse.so" : ""
 }
 linux.debug.arm64 = {
