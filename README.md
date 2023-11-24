@@ -37,8 +37,15 @@ sudo make install
 ## Building
 The build process should be realtively straghtforward since this project adheres to the typical GDExtension convention of using `scons` as a build system. For most platforms, the build process should just involve running the `scons` command.
 
-## Usage
+## Setting up the extension in a fresh project
+To add the extension to a godot 4.1+ project, open the project and import the .zip file [TBD, see #6] or the `.gdextension` file using the import button on the AssetLib tab of Godot.
 
+## Usage
+A minimal example of how to use the extension can be found in the [`demo`](./demo/) directory
+
+When you start the demo by pressing the play button you will see the godot engine logo for longer than you may be used to (about 5 seconds) - as soon as you see this, hit the 1+2 buttons on your wii remote to make it discoverable. If it successfully discovers and connects to your remote, youll get a little vibration/buzz (like a real wii does) and the player 1 light on the wiimote will turn on.
+
+If you successfully connect to a wiimote, then it should be looking for IR sensor data (such as from the sensor bar, or really any two IR sources spaced about that far apart - two candles may work in a pinch) to change the position of the camera (like [Johnny Lee's wiimote head tracking demo](https://www.youtub.com/watch/Jd3-eiid-Uw?t=155))
 
 
 ## Developer Documentation
