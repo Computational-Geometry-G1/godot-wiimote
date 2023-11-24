@@ -156,6 +156,7 @@ void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
 		instance->set_x(wm->ir.x);
 		instance->set_y(wm->ir.y);
 		instance->set_z(wm->ir.z);
+		instance->set_position(Vector3(wm->ir.x, wm->ir.y, wm->ir.z));
 
 		// printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
 		// printf("IR z distance: %f\n", wm->ir.z);
@@ -378,6 +379,11 @@ void GDWiimote::simulate_data(double delta) {
 	x = 10.0 + (10.0 * sin(time_passed * 2.0));
 	y = 10.0 + (10.0 * cos(time_passed * 1.5));
 	z = 10.0 + (10.0 * sin(time_passed));
+}
+
+
+void GDWiimote::set_position(const Vector3 new_pos) {
+	set_position(new_pos);
 }
 
 void GDWiimote::set_x(const double new_x) {
