@@ -70,8 +70,13 @@ if env["platform"] == "macos":
 libraryfile = "bin/{}".format(file)
 # env.Append(LIBS = ['wiiuse','bluetooth'])
 
+libs = ['wiiuse']
+
+if env["platform"] == "linux":
+    libs.append("bluetooth")
+
 env.Append(LIBPATH=["bin/"])
-env.Append(LIBS=['wiiuse','bluetooth'])
+env.Append(LIBS=libs)
 
 library = env.SharedLibrary(
     libraryfile,
