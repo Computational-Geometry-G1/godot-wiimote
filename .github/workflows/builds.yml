@@ -99,12 +99,6 @@ jobs:
         with:
           path: godot-cpp
           key: ${{ matrix.identifier }}-godot-cpp
-      - name: Compile godot-cpp
-        shell: sh
-        if: steps.cache-godot-cpp.outputs.cache-hit != 'true'
-        run: |
-          scons target='${{ matrix.target }}' platform='${{ matrix.platform }}' arch='${{ matrix.arch }}'
-        working-directory: godot-cpp
 
       - name: Compile Extension
         shell: sh
