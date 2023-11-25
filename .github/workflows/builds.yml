@@ -88,6 +88,13 @@ jobs:
           cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64"
           make wiiuse
           sudo make install
+      - name: Setup Ninja
+        if: ${{ matrix.platform == 'windows' }}
+        uses: ashutoshvarma/setup-ninja@master
+        with:
+          # ninja version to download. Default: 1.10.0
+          version: 1.10.0
+
       - name: build and install Wiiuse dependency (windows)
         if: ${{ matrix.platform == 'windows' }}
         run: |
