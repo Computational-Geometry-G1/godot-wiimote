@@ -40,10 +40,12 @@ windows.x86_64 = {
     "res://bin/libwiiuse.so" : ""
 }
 linux.debug.x86_64 = {
-    "res://bin/libwiiuse.so" : ""
+    "res://bin/libwiiuse.so" : "",
+    "res://bin/libwiiuse.so.0": "",
+    "res://bin/libwiiuse.so.0.15.5" : ""
 }
 linux.x86_64 = {
-    "res://bin/libwiiuse.so" : ",
+    "res://bin/libwiiuse.so" : "",
     "res://bin/libwiiuse.so.0": "",
     "res://bin/libwiiuse.so.0.15.5" : ""
 }
