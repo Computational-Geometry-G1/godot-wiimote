@@ -78,7 +78,8 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -qqq build-essential pkg-config libbluetooth-dev
-      - name: build and install Wiiuse dependency (unix)
+      - name: build and install Wiiuse dependency (unix/macos)
+        if: ${{ matrix.platform != 'windows' }}
         run: |
           git clone https://github.com/wiiuse/wiiuse
           cd wiiuse
@@ -87,6 +88,16 @@ jobs:
           cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64"
           make wiiuse
           sudo make install
+      - name: build and install Wiiuse dependency (windows)
+        if: ${{ matrix.platform == 'windows' }}
+        run: |
+          git clone https://github.com/wiiuse/wiiuse
+          cd wiiuse
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64"
+          make wiiuse
+          make install
       - name: Setup MinGW for Windows/MinGW build
         if: ${{ matrix.platform == 'windows' }}
         uses: egor-tensin/setup-mingw@v2
