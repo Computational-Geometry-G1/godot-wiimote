@@ -266,6 +266,11 @@ void GDWiimote::calibrate() {
 		x_offset = -1 * wm->ir.x;
 		y_offset = -1 * wm->ir.y;
 		z_offset = -1 * wm->ir.z;
+
+		instance->set_x(0);
+		instance->set_y(0);
+		instance->set_z(0);
+
 	}
 
 	rumble(200);
