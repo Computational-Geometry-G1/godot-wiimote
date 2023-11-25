@@ -90,7 +90,7 @@ def copy_bin_to_projectdir(target, source, env):
     
     prefix=""
 
-    if env["platform"] == "linux":
+    if env["platform"] != "windows":
         prefix="lib"
 
     targetfrom = "bin/{}{}".format(prefix, file)
@@ -99,9 +99,18 @@ def copy_bin_to_projectdir(target, source, env):
 
 
     targetdir = "{}/bin/".format(projectdir)
-    shutil.copyfile("/usr/local/lib/libwiiuse.so", targetdir+"libwiiuse.so")
-    shutil.copyfile("/usr/local/lib/libwiiuse.so.0", targetdir+"libwiiuse.so.0")
-    shutil.copyfile("/usr/local/lib/libwiiuse.so.0.15.5", targetdir+"libwiiuse.so.0.15.5")
+    if env["platform"] != "windows":
+
+        if env["platform"] == "linux":
+
+            shutil.copyfile("/usr/local/lib/libwiiuse{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse{}.0".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}.0".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse{}.0.15.5".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}.0.15.5".format(env["SHLIBSUFFIX"]))
+        elif env["platform"] == "macos":
+
+            shutil.copyfile("/usr/local/lib/libwiiuse{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse.0{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0{}".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]))
 
 copy = env.Command(libraryfile, None, copy_bin_to_projectdir)
 
