@@ -26,7 +26,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10603, 3.61522, -17.0611)
 texture = ExtResource("1_8a3jp")
 
 [node name="GDWiimote" type="GDWiimote" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01901, 4.03066, 6.00139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01901, 4.03066, 13.0662)
 script = ExtResource("2_j3oec")
 
 [node name="Camera3D" type="Camera3D" parent="GDWiimote"]
