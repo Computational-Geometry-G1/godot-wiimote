@@ -24,11 +24,5 @@ func _process(delta):
 		simulate_data(delta)
 		
 	print(delta)
-	print(position)
 	print(get_position())
-	print(get_global_position())
-	set_global_position(get_position())
-	print(get_x())
-	print(get_y())
-	print(get_x())
 	print()
