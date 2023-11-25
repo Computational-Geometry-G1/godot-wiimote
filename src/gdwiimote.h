@@ -36,7 +36,7 @@ public:
 	void start();
 	void poll();
 	void calibrate();
-	void set_pos(const Vector3 new_pos);
+	void set_pos();
 	void rumble(int delay_ms);
 
 	void simulate_data(double);
