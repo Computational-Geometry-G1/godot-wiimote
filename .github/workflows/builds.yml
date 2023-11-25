@@ -102,7 +102,7 @@ jobs:
           cd wiiuse
           mkdir build
           cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64" -G Ninja
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl -G Ninja
           ninja
       - name: Setup MinGW for Windows/MinGW build
         if: ${{ matrix.platform == 'windows' }}
