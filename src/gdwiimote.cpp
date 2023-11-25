@@ -292,7 +292,7 @@ void GDWiimote::start() {
 
 void GDWiimote::poll() {
 	if(any_wiimote_connected(wiimotes, MAX_WIIMOTES)){
-		if (wiiuse_poll(wiimotes, MAX_WIIMOTES)) {
+		while (wiiuse_poll(wiimotes, MAX_WIIMOTES)) {
 			/*
 				*	This happens if something happened on any wiimote.
 				*	So go through each one and check if anything happened.
