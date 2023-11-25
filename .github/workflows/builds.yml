@@ -93,12 +93,12 @@ jobs:
         uses: egor-tensin/setup-mingw@v2
         with:
           version: 12.2.0
-
-      - name: Compile godot-cpp
-        shell: sh
-        run: |
-          scons target='${{ matrix.target }}' platform='${{ matrix.platform }}' arch='${{ matrix.arch }}'
-        working-directory: godot-cpp
+      - name: Cache godot-cpp
+        id: cache-godot-cpp
+        uses: actions/cache@v3
+        with:
+          path: godot-cpp
+          key: ${{ matrix.identifier }}-godot-cpp
 
       - name: Compile Extension
         shell: sh
