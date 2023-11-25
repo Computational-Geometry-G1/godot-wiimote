@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import os
-
+import shutil
 # For reference:
 # - CCFLAGS are compilation flags shared between C and C++
 # - CFLAGS are for C-specific compilation flags
@@ -59,19 +59,25 @@ env = SConscript("extern/godot-cpp/SConstruct", {"env": env, "customs": customs}
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
 env.Append(CPPPATH=["src/"])
-sources = Glob("src/*.cpp")
 
 file = "{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"])
 
 if env["platform"] == "macos":
     platlibname = "{}.{}.{}".format(libname, env["platform"], env["target"])
-    file = "{}.framework/{}".format(env["platform"], platlibname, platlibname)
+    file = platlibname
 
 libraryfile = "bin/{}".format(file)
 # env.Append(LIBS = ['wiiuse','bluetooth'])
 
+libs = ['wiiuse']
+
+if env["platform"] == "linux":
+    libs.append("bluetooth")
+
 env.Append(LIBPATH=["bin/"])
-env.Append(LIBS=['wiiuse','bluetooth'])
+env.Append(LIBS=libs)
+
+sources = Glob("src/*.cpp")
 
 library = env.SharedLibrary(
     libraryfile,
@@ -80,11 +86,11 @@ library = env.SharedLibrary(
 
 
 def copy_bin_to_projectdir(target, source, env):
-    import shutil
+
     
     prefix=""
 
-    if env["platform"] == "linux":
+    if env["platform"] != "windows":
         prefix="lib"
 
     targetfrom = "bin/{}{}".format(prefix, file)
@@ -93,9 +99,18 @@ def copy_bin_to_projectdir(target, source, env):
 
 
     targetdir = "{}/bin/".format(projectdir)
-    shutil.copyfile("/usr/local/lib/libwiiuse.so", targetdir+"libwiiuse.so")
-    shutil.copyfile("/usr/local/lib/libwiiuse.so.0", targetdir+"libwiiuse.so.0")
-    shutil.copyfile("/usr/local/lib/libwiiuse.so.0.15.5", targetdir+"libwiiuse.so.0.15.5")
+    if env["platform"] != "windows":
+
+        if env["platform"] == "linux":
+
+            shutil.copyfile("/usr/local/lib/libwiiuse{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse{}.0".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}.0".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse{}.0.15.5".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}.0.15.5".format(env["SHLIBSUFFIX"]))
+        elif env["platform"] == "macos":
+
+            shutil.copyfile("/usr/local/lib/libwiiuse{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse.0{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0{}".format(env["SHLIBSUFFIX"]))
+            shutil.copyfile("/usr/local/lib/libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]))
 
 copy = env.Command(libraryfile, None, copy_bin_to_projectdir)
 

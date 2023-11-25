@@ -1,13 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://psoe0rwnwy34"]
+[gd_scene load_steps=3 format=3 uid="uid://cgj2nig51prdu"]
 
-[ext_resource type="Script" path="res://mousemove.gd" id="1_6c0wi"]
 [ext_resource type="Texture2D" uid="uid://het36aiuwb2l" path="res://target.png" id="1_8a3jp"]
+[ext_resource type="Script" path="res://mote.gd" id="2_j3oec"]
 
 [node name="Main" type="Node3D"]
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01901, 4.03066, 6.00139)
-script = ExtResource("1_6c0wi")
 
 [node name="Target" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54433, 4.04266, -9.7656)
@@ -28,3 +24,9 @@ texture = ExtResource("1_8a3jp")
 [node name="Target5" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10603, 3.61522, -17.0611)
 texture = ExtResource("1_8a3jp")
+
+[node name="GDWiimote" type="GDWiimote" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01901, 4.03066, 13.0662)
+script = ExtResource("2_j3oec")
+
+[node name="Camera3D" type="Camera3D" parent="GDWiimote"]

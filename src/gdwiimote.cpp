@@ -99,11 +99,11 @@ void handle_ctrl_status(struct wiimote_t* wm) {
  *	event occurs on the specified wiimote.
  */
 void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
-	printf("\n\n--- EVENT [id %i] ---\n", wm->unid);
+	// printf("\n\n--- EVENT [id %i] ---\n", wm->unid);
 
 	/* if a button is pressed, report it */
 	if (IS_PRESSED(wm, WIIMOTE_BUTTON_A)) {
-		printf("A pressed\n");
+		// printf("A pressed\n");
 		instance->calibrate();
 	}
 	if (IS_PRESSED(wm, WIIMOTE_BUTTON_B)) {
@@ -147,19 +147,20 @@ void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
 		int i = 0;
 
 		/* go through each of the 4 possible IR sources */
-		// for (; i < 4; ++i) {
-		// 	/* check if the source is visible */
-		// 	if (wm->ir.dot[i].visible) {
-		// 		printf("IR source %i: (%u, %u)\n", i, wm->ir.dot[i].x, wm->ir.dot[i].y);
-		// 	}
-		// }
+		for (; i < 4; ++i) {
+			/* check if the source is visible */
+			if (wm->ir.dot[i].visible) {
+				printf("IR source %i: (%u, %u)\n", i, wm->ir.dot[i].x, wm->ir.dot[i].y);
+			}
+		}
 
 		instance->set_x(wm->ir.x);
 		instance->set_y(wm->ir.y);
 		instance->set_z(wm->ir.z);
+		instance->set_pos();
 
-		// printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
-		// printf("IR z distance: %f\n", wm->ir.z);
+		printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
+		printf("IR z distance: %f\n", wm->ir.z);
 	}
 
 	/* show events specific to supported expansions */
@@ -266,6 +267,11 @@ void GDWiimote::calibrate() {
 		x_offset = -1 * wm->ir.x;
 		y_offset = -1 * wm->ir.y;
 		z_offset = -1 * wm->ir.z;
+
+		set_x(0);
+		set_y(0);
+		set_z(0);
+
 	}
 
 	rumble(200);
@@ -292,7 +298,7 @@ void GDWiimote::start() {
 
 void GDWiimote::poll() {
 	if(any_wiimote_connected(wiimotes, MAX_WIIMOTES)){
-		if (wiiuse_poll(wiimotes, MAX_WIIMOTES)) {
+		while (wiiuse_poll(wiimotes, MAX_WIIMOTES)) {
 			/*
 				*	This happens if something happened on any wiimote.
 				*	So go through each one and check if anything happened.
@@ -307,7 +313,7 @@ void GDWiimote::poll() {
 
 					case WIIUSE_STATUS:
 						/* a status event occurred */
-						handle_ctrl_status(wiimotes[i]);
+						// handle_ctrl_status(wiimotes[i]);
 						break;
 
 					case WIIUSE_DISCONNECT:
@@ -376,9 +382,14 @@ void GDWiimote::poll() {
 void GDWiimote::simulate_data(double delta) {
 	time_passed += delta;
 
-	x = 10.0 + (10.0 * sin(time_passed * 2.0));
-	y = 10.0 + (10.0 * cos(time_passed * 1.5));
-	z = 10.0 + (10.0 * sin(time_passed));
+	set_x(10.0 + (10.0 * sin(time_passed * 2.0)));
+	set_y(10.0 + (10.0 * cos(time_passed * 1.5)));
+	set_z(10.0 + (10.0 * sin(time_passed)));
+}
+
+
+void GDWiimote::set_pos() {
+	set_position(Vector3(get_x(), get_y(), get_z()));
 }
 
 void GDWiimote::set_x(const double new_x) {
