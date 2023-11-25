@@ -98,7 +98,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: godot-cpp
-          key: ${{ runner.os }}-godot-cpp
+          key: ${{ matrix.identifier }}-godot-cpp
       - name: Compile godot-cpp
         shell: sh
         if: steps.cache-godot-cpp.outputs.cache-hit != 'true'
