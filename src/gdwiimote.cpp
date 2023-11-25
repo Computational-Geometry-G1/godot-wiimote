@@ -267,9 +267,9 @@ void GDWiimote::calibrate() {
 		y_offset = -1 * wm->ir.y;
 		z_offset = -1 * wm->ir.z;
 
-		instance->set_x(0);
-		instance->set_y(0);
-		instance->set_z(0);
+		set_x(0);
+		set_y(0);
+		set_z(0);
 
 	}
 
