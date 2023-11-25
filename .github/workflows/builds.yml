@@ -97,6 +97,7 @@ jobs:
           cd build
           cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64" 
           cmake --build . 
+          cmake --install . 
       - name: Setup MinGW for Windows/MinGW build
         if: ${{ matrix.platform == 'windows' }}
         uses: egor-tensin/setup-mingw@v2
