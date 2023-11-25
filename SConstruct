@@ -112,11 +112,11 @@ def copy_bin_to_projectdir(target, source, env):
             shutil.copyfile("/usr/local/lib/libwiiuse.0{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0{}".format(env["SHLIBSUFFIX"]))
             shutil.copyfile("/usr/local/lib/libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]))
 
-copy = env.Command(f"{projectdir}/{libraryfile}", libraryfile, Copy("$TARGET", "$SOURCE"))
+copy_to_project = env.Command(f"{projectdir}/{libraryfile}", libraryfile, Copy("$TARGET", "$SOURCE"))
 
-env.Depends(copy, library)
+env.Depends(copy_to_project, library)
 
-default_args = [library, copy]
+default_args = [library, copy_to_project]
 if localEnv.get("compiledb", False):
     default_args += [compilation_db]
 Default(*default_args)
