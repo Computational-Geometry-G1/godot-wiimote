@@ -34,6 +34,10 @@ make wiiuse
 sudo make install
 ```
 
+#### Building wiiuse (macos)
+see unix instructions, except use the following cmake command if you want support for universal binaries (for both intel and Apple Silicon macs):
+`cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64"`
+
 ## Building
 The build process should be realtively straghtforward since this project adheres to the typical GDExtension convention of using `scons` as a build system. For most platforms, the build process should just involve running the `scons` command.
 
