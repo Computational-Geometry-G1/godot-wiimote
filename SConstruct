@@ -58,10 +58,10 @@ env.Alias("compiledb", compilation_db)
 env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs})
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=["src/"])
-
-if env["platform"] == "linux" or env["platform"] == "macos":
-    libname = "lib" + libname
+cpppath = ["src/"]
+if env["platform"] == "windows":
+    cpppath.append("C:\Program Files (x86)\WiiUse\include")
+env.Append(CPPPATH=cpppath)
 
 file = "{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"])
 
@@ -73,11 +73,15 @@ libraryfile = "bin/{}".format(file)
 # env.Append(LIBS = ['wiiuse','bluetooth'])
 
 libs = ['wiiuse']
+libpath = ["bin/"]
 
 if env["platform"] == "linux":
     libs.append("bluetooth")
 
-env.Append(LIBPATH=["bin/"])
+if env["platform"] == "windows":
+    libpath.append("C:\Program Files (x86)\WiiUse\lib")
+
+env.Append(LIBPATH=libpath)
 env.Append(LIBS=libs)
 
 sources = Glob("src/*.cpp")
