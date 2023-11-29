@@ -1,4 +1,10 @@
 [submodule "godot-cpp"]
-	path = godot-cpp
+	path = extern/godot-cpp
 	url = https://github.com/godotengine/godot-cpp.git
 	branch = 4.0
+[submodule "extern/wiiuse"]
+	path = extern/wiiuse
+	url = https://github.com/wiiuse/wiiuse.git
+[submodule "extern/godot-engine"]
+	path = extern/godot-engine
+	url = https://github.com/godotengine/godot.git
