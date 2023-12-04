@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cno7xqpr57mx5"]
+
+[ext_resource type="Texture2D" uid="uid://cr5pcefneqt0k" path="res://Etihad_Stadium.jpg" id="1_lsmmx"]
+[ext_resource type="Script" path="res://picture.gd" id="1_rla1r"]
+[ext_resource type="Script" path="res://Node3D.gd" id="2_2fom0"]
+
+[node name="Scene" type="Node3D"]
+script = ExtResource("1_rla1r")
+
+[node name="Node3D" type="Node3D" parent="."]
+script = ExtResource("2_2fom0")
+
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+keep_aspect = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0652304, 0, -2.24126)
+texture = ExtResource("1_lsmmx")
