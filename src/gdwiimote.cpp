@@ -380,7 +380,7 @@ void GDWiimote::poll() {
 void GDWiimote::simulate_data(double delta) {
 	time_passed += delta;
 
-	set_x(10.0 + (10.0 * sin(time_passed * 2.0)));
+	set_x(30.0 + (30.0 * sin(time_passed * 2.0)));
 	set_y(10.0 + (10.0 * cos(time_passed * 1.5)));
 	set_z(10.0 + (10.0 * sin(time_passed)));
 }
