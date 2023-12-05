@@ -21,24 +21,28 @@ jobs:
             os: windows-latest
             name: 🏁 Windows Debug
             target: template_debug
+            mode: debug
             platform: windows
             arch: x86_64
           - identifier: windows-release
             os: windows-latest
             name: 🏁 Windows Release
             target: template_release
+            mode: release
             platform: windows
             arch: x86_64
           - identifier: macos-debug
             os: macos-latest
             name: 🍎 macOS (universal) Debug
             target: template_debug
+            mode: debug
             platform: macos
             arch: universal
           - identifier: macos-release
             os: macos-latest
             name: 🍎 macOS (universal) Release
             target: template_release
+            mode: release
             platform: macos
             arch: universal
           - identifier: linux-debug
@@ -46,6 +50,7 @@ jobs:
             name: 🐧 Linux Debug
             runner: ubuntu-20.04
             target: template_debug
+            mode: debug
             platform: linux
             arch: x86_64
           - identifier: linux-release
@@ -53,6 +58,7 @@ jobs:
             name: 🐧 Linux Release
             runner: ubuntu-20.04
             target: template_release
+            mode: release
             platform: linux
             arch: x86_64
 
@@ -78,16 +84,26 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt-get install -qqq build-essential pkg-config libbluetooth-dev
-      - name: build and install Wiiuse dependency (unix)
+      - name: build and install Wiiuse dependency (unix/macos)
         if: ${{ matrix.platform != 'windows' }}
         run: |
           git clone https://github.com/wiiuse/wiiuse
           cd wiiuse
           mkdir build
           cd build
-          cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64"
           make wiiuse
           sudo make install
+      - name: build and install Wiiuse dependency (windows)
+        if: ${{ matrix.platform == 'windows' }}
+        run: |
+          git clone https://github.com/wiiuse/wiiuse
+          cd wiiuse
+          mkdir build
+          cd build
+          cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE_SDL=NO -DBUILD_SHARED_LIBS=TRUE "-DCMAKE_OSX_ARCHITECTURES=x86_64;arm64" 
+          cmake --build . --config ${{ (matrix.mode == 'debug') && 'Debug' || 'Release' }}
+          cmake --install . --config ${{ (matrix.mode == 'debug') && 'Debug' || 'Release' }}
       - name: Setup MinGW for Windows/MinGW build
         if: ${{ matrix.platform == 'windows' }}
         uses: egor-tensin/setup-mingw@v2

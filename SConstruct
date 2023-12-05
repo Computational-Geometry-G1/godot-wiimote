@@ -58,7 +58,10 @@ env.Alias("compiledb", compilation_db)
 env = SConscript("godot-cpp/SConstruct", {"env": env, "customs": customs})
 
 # tweak this if you want to use different folders, or more folders, to store your source code in.
-env.Append(CPPPATH=["src/"])
+cpppath = ["src/"]
+if env["platform"] == "windows":
+    cpppath.append("C:\Program Files (x86)\WiiUse\include")
+env.Append(CPPPATH=cpppath)
 
 file = "{}{}{}".format(libname, env["suffix"], env["SHLIBSUFFIX"])
 
@@ -70,11 +73,15 @@ libraryfile = "bin/{}".format(file)
 # env.Append(LIBS = ['wiiuse','bluetooth'])
 
 libs = ['wiiuse']
+libpath = ["bin/"]
 
 if env["platform"] == "linux":
     libs.append("bluetooth")
 
-env.Append(LIBPATH=["bin/"])
+if env["platform"] == "windows":
+    libpath.append("C:\Program Files (x86)\WiiUse\lib")
+
+env.Append(LIBPATH=libpath)
 env.Append(LIBS=libs)
 
 sources = Glob("src/*.cpp")
@@ -84,35 +91,12 @@ library = env.SharedLibrary(
     source=sources,
 )
 
-
-def copy_bin_to_projectdir(target, source, env):
-
-    
-    prefix=""
-
-    if env["platform"] != "windows":
-        prefix="lib"
-
-    targetfrom = "bin/{}{}".format(prefix, file)
-    targetdest = "{}/bin/{}{}".format(projectdir, prefix, file)
-    shutil.copyfile(targetfrom, targetdest)
+prefix=""
+if env["platform"] == "linux":
+    prefix = "lib"
 
 
-    targetdir = "{}/bin/".format(projectdir)
-    if env["platform"] != "windows":
-
-        if env["platform"] == "linux":
-
-            shutil.copyfile("/usr/local/lib/libwiiuse{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}".format(env["SHLIBSUFFIX"]))
-            shutil.copyfile("/usr/local/lib/libwiiuse{}.0".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}.0".format(env["SHLIBSUFFIX"]))
-            shutil.copyfile("/usr/local/lib/libwiiuse{}.0.15.5".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}.0.15.5".format(env["SHLIBSUFFIX"]))
-        elif env["platform"] == "macos":
-
-            shutil.copyfile("/usr/local/lib/libwiiuse{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse{}".format(env["SHLIBSUFFIX"]))
-            shutil.copyfile("/usr/local/lib/libwiiuse.0{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0{}".format(env["SHLIBSUFFIX"]))
-            shutil.copyfile("/usr/local/lib/libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]), targetdir+"libwiiuse.0.15.5{}".format(env["SHLIBSUFFIX"]))
-
-copy_to_project = env.Command(f"{projectdir}/{libraryfile}", libraryfile, Copy("$TARGET", "$SOURCE"))
+copy_to_project = env.Command(f"{projectdir}/bin/{prefix}{file}", f"bin/{prefix}{file}", Copy("$TARGET", "$SOURCE"))
 
 env.Depends(copy_to_project, library)
 
