@@ -27,7 +27,7 @@ void GDWiimote::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_x_sensitivity"), &GDWiimote::set_x_sensitivity);
 	ClassDB::bind_method(D_METHOD("set_y_sensitivity"), &GDWiimote::set_y_sensitivity);
 	ClassDB::bind_method(D_METHOD("set_z_sensitivity"), &GDWiimote::set_z_sensitivity);
-
+	ClassDB::bind_method(D_METHOD("set_auto_position"), &GDWiimote::set_auto_position);
 
 	ClassDB::bind_method(D_METHOD("simulate_data"), &GDWiimote::simulate_data);
 }
@@ -156,7 +156,6 @@ void handle_event(struct wiimote_t* wm, struct GDWiimote* instance) {
 		instance->set_x(wm->ir.x);
 		instance->set_y(wm->ir.y);
 		instance->set_z(wm->ir.z);
-		instance->set_pos();
 
 		printf("IR cursor: (%u, %u)\n", wm->ir.x, wm->ir.y);
 		printf("IR z distance: %f\n", wm->ir.z);
@@ -393,6 +392,7 @@ void GDWiimote::set_pos() {
 
 void GDWiimote::set_x(const double new_x) {
 	x = new_x;
+	if (auto_position) set_pos();
 }
 
 double GDWiimote::get_x() {
@@ -401,6 +401,7 @@ double GDWiimote::get_x() {
 
 void GDWiimote::set_y(const double new_y) {
 	y = new_y;
+	if (auto_position) set_pos();
 }
 
 double GDWiimote::get_y() {
@@ -409,6 +410,7 @@ double GDWiimote::get_y() {
 
 void GDWiimote::set_z(const double new_z) {
 	z = new_z;
+	if (auto_position) set_pos();
 }
 
 double GDWiimote::get_z() {
@@ -426,4 +428,9 @@ void GDWiimote::set_y_sensitivity(const double new_y_sensitivity) {
 
 void GDWiimote::set_z_sensitivity(const double new_z_sensitivity) {
 	z_sensitivity = new_z_sensitivity;
+}
+
+
+void GDWiimote::set_auto_position(const bool new_auto_position){
+		auto_position = new_auto_position;
 }

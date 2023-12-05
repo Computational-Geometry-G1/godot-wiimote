@@ -21,6 +21,8 @@ private:
 	double y_sensitivity = 1;
 	double z_sensitivity = 1;
 
+	bool auto_position = true;
+
 protected:
 	static void _bind_methods();
 
@@ -52,6 +54,9 @@ public:
 	void set_x_sensitivity(const double new_x_sensitivity);
 	void set_y_sensitivity(const double new_y_sensitivity);
 	void set_z_sensitivity(const double new_z_sensitivity);
+
+	void set_auto_position(const bool auto_position);
+
 };
 
 }
