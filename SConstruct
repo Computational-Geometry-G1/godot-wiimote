@@ -91,9 +91,12 @@ library = env.SharedLibrary(
     source=sources,
 )
 
+prefix=""
+if env["platform"] == "linux":
+    prefix = "lib"
 
 
-copy_to_project = env.Command(f"{projectdir}/{libraryfile}", libraryfile, Copy("$TARGET", "$SOURCE"))
+copy_to_project = env.Command(f"{projectdir}/bin/{prefix}{file}", f"bin/{prefix}{file}", Copy("$TARGET", "$SOURCE"))
 
 env.Depends(copy_to_project, library)
 
