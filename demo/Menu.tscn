@@ -37,6 +37,24 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="Label" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 316.0
+offset_top = 145.0
+offset_right = 854.0
+offset_bottom = 223.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Upon selecting a demo, press 1+2 on your wiimote to begin discovery. 
+Your wii remote will vibrate briefly when successfully connected.
+
+"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Targets" to="." method="_on_targets_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Stadium" to="." method="_on_stadium_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
