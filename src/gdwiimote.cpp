@@ -30,6 +30,8 @@ void GDWiimote::_bind_methods() {
 	ClassDB::bind_method(D_METHOD("set_auto_position"), &GDWiimote::set_auto_position);
 
 	ClassDB::bind_method(D_METHOD("simulate_data"), &GDWiimote::simulate_data);
+	ClassDB::bind_method(D_METHOD("calibrate"), &GDWiimote::calibrate);
+
 }
 
 short any_wiimote_connected(wiimote** wm, int wiimotes) {
