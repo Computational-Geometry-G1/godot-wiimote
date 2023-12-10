@@ -1,33 +1,33 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgj2nig51prdu"]
 
-[ext_resource type="Texture2D" uid="uid://het36aiuwb2l" path="res://target.png" id="1_8a3jp"]
-[ext_resource type="Script" path="res://mote.gd" id="2_j3oec"]
+[ext_resource type="Texture2D" uid="uid://het36aiuwb2l" path="res://target.png" id="1_rdhwe"]
+[ext_resource type="Script" path="res://mote.gd" id="2_xi1j7"]
 
 [node name="Main" type="Node3D"]
 
 [node name="Target" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.54433, 4.04266, -9.7656)
-texture = ExtResource("1_8a3jp")
+texture = ExtResource("1_rdhwe")
 
 [node name="Target2" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.78629, 5.96448, -1.39272)
-texture = ExtResource("1_8a3jp")
+texture = ExtResource("1_rdhwe")
 
 [node name="Target3" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.133479, 8.19375, -35.4127)
-texture = ExtResource("1_8a3jp")
+texture = ExtResource("1_rdhwe")
 
 [node name="Target4" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.65004, 1.80761, -24.8811)
-texture = ExtResource("1_8a3jp")
+texture = ExtResource("1_rdhwe")
 
 [node name="Target5" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10603, 3.61522, -17.0611)
-texture = ExtResource("1_8a3jp")
+texture = ExtResource("1_rdhwe")
 
 [node name="GDWiimote" type="GDWiimote" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01901, 4.03066, 13.0662)
-script = ExtResource("2_j3oec")
+script = ExtResource("2_xi1j7")
 
 [node name="Camera3D" type="Camera3D" parent="GDWiimote"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.55141)
