@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Menu.gd" id="1_5olq3"]
 
 [node name="Menu" type="Node2D"]
+z_index = 100
 script = ExtResource("1_5olq3")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
