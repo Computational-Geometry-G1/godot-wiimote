@@ -26,11 +26,11 @@ alignment = 1
 
 [node name="Targets" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Targets"
+text = "Targets Demo"
 
 [node name="Stadium" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Stadium"
+text = "Stadium Demo"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
