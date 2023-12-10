@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godot-wiimote"
-run/main_scene="res://picture.tscn"
+run/main_scene="res://Menu.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
