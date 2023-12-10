@@ -11,9 +11,9 @@ func _ready():
 	#gdwiimote = GDWiimote.new()
 	print("connecting....")
 	num_connected = wiimote_connect(5)
-	set_x_sensitivity(0.5)
-	set_y_sensitivity(0.5)
-	set_z_sensitivity(0.5)
+	set_x_sensitivity(0.02)
+	set_y_sensitivity(0.02)
+	set_z_sensitivity(0.02)
 	print("turn on your wiimote now....")
 	# pass # Replace with function body.
 	if num_connected == 0:
