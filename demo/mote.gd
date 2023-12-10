@@ -26,3 +26,9 @@ func _process(delta):
 	print(delta)
 	print(get_position())
 	print()
+	
+	
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("calibrate"):
+		if num_connected > 0:
+			calibrate()

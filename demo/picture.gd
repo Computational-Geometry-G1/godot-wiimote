@@ -33,6 +33,10 @@ func _process(delta):
 
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("calibrate"):
+		if num_connected > 0:
+			calibrate()
+	
 	if num_connected == 0:
 		if event is InputEventMouseMotion && Input.get_mouse_mode() == 2:
 			_camera.rotate_x(deg_to_rad(-event.relative.y * 0.1))
