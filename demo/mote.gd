@@ -23,9 +23,9 @@ func _process(delta):
 	else:
 		simulate_data(delta)
 		
-	print(delta)
-	print(get_position())
-	print()
+	#print(delta)
+	#print(get_position())
+	#print()
 	
 	
 func _input(event: InputEvent) -> void:
